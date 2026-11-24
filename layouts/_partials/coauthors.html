@@ -1,0 +1,14 @@
+{{- /*
+  "with A", "with A and B", "with A, B and C".
+  Each co-author: name, optional url, affiliation, note.
+*/ -}}
+{{- $list := . | default slice -}}
+{{- $n := len $list -}}
+{{- if $n -}}
+with {{ range $i, $c := $list -}}
+  {{- if and (gt $i 0) (eq $i (sub $n 1)) }} and {{ else if gt $i 0 }}, {{ end -}}
+  {{- with $c.url }}<a href="{{ . }}">{{ $c.name }}</a>{{ else }}{{ $c.name }}{{ end -}}
+  {{- with $c.affiliation }} ({{ . }}){{ end -}}
+  {{- with $c.note }} ({{ . }}){{ end -}}
+{{- end -}}
+{{- end -}}

@@ -1,4 +1,107 @@
 {{ define "main" }}
-<h1>{{ hugo.Data.profile.name }}</h1>
-{{ .Content }}
+{{- $profile := hugo.Data.profile -}}
+{{- $jmp := hugo.Data.research.jmp -}}
+
+<section class="intro" aria-labelledby="name">
+  <div class="intro__photo">{{ partial "headshot.html" . }}</div>
+  <div>
+    <h1 id="name">{{ $profile.name }}</h1>
+    <p class="title-line">{{ $profile.title_line }}</p>
+    {{- if and $profile.on_market $profile.market_banner }}
+    <p class="market-banner">{{ $profile.market_banner }}</p>
+    {{- end }}
+  </div>
+</section>
+
+<div class="bio">
+  {{ .Content }}
+</div>
+
+{{- with $profile.research_interests }}
+<section aria-labelledby="interests-heading">
+  <h2 id="interests-heading">Research interests</h2>
+  <ul class="interests">
+    {{- range . }}
+    <li>{{ . }}</li>
+    {{- end }}
+  </ul>
+  {{- with $profile.research_interests_secondary }}
+  <p class="muted">{{ . }}</p>
+  {{- end }}
+</section>
+{{- end }}
+
+{{- with $jmp }}
+<section class="jmp-box" aria-labelledby="jmp-box-heading">
+  <h2 id="jmp-box-heading">Job Market Paper</h2>
+  <h3>{{ .title | markdownify }}</h3>
+  {{- with .coauthors }}
+  <p class="paper__meta">{{ partial "coauthors.html" . }}</p>
+  {{- end }}
+  {{- with .key_findings }}
+  <ul>
+    {{- range . }}
+    <li>{{ . | markdownify }}</li>
+    {{- end }}
+  </ul>
+  {{- end }}
+  <div class="buttons">
+    {{- with .pdf }}
+    <a class="button" href="{{ . | relURL }}">Paper (PDF)</a>
+    {{- end }}
+    <a class="button button--secondary" href="{{ "research/#jmp" | relURL }}">Abstract</a>
+  </div>
+</section>
+{{- end }}
+
+{{- $refs := where (hugo.Data.references.references | default slice) "show" true }}
+{{- with $refs }}
+<section aria-labelledby="references-heading">
+  <h2 id="references-heading">References</h2>
+  {{- range . }}
+  <div class="person">
+    <p class="person__name">{{ with .url }}<a href="{{ . }}">{{ end }}{{ .name }}{{ if .url }}</a>{{ end }}</p>
+    {{- with .role }}<p>{{ . }}</p>{{ end }}
+    {{- with .institution }}<p>{{ . }}</p>{{ end }}
+    {{- with .email }}<p>{{ partial "email.html" . }}</p>{{ end }}
+  </div>
+  {{- end }}
+</section>
+{{- end }}
+
+<section aria-labelledby="contact-heading">
+  <h2 id="contact-heading">Contact</h2>
+  <address class="contact-grid">
+    <div>
+      {{- with $profile.email }}
+      <p><span class="label">Email</span>{{ partial "email.html" . }}</p>
+      {{- end }}
+      {{- with $profile.phone }}
+      <p><span class="label">Phone</span><a href="tel:{{ replace . " " "" }}">{{ . }}</a></p>
+      {{- end }}
+      {{- with $profile.cv }}
+      <p><span class="label">CV</span><a href="{{ . | relURL }}">CV (PDF)</a>{{ with $profile.cv_updated }}, updated {{ . }}{{ end }}</p>
+      {{- end }}
+    </div>
+    <div>
+      <p><span class="label">Address</span>
+        {{- range $i, $line := $profile.address }}{{ if $i }}<br>{{ end }}{{ $line }}{{ end }}
+        {{- with $profile.office }}<br>Office: {{ . }}{{ end }}
+      </p>
+    </div>
+  </address>
+  {{- partial "links.html" (dict "links" $profile.links "labelled" true) }}
+</section>
+
+{{- with $profile.skills }}
+<section aria-labelledby="skills-heading">
+  <h2 id="skills-heading">Skills</h2>
+  <dl class="kv">
+    {{- range . }}
+    <dt>{{ .label }}</dt>
+    <dd>{{ delimit .items " · " }}</dd>
+    {{- end }}
+  </dl>
+</section>
+{{- end }}
 {{ end }}

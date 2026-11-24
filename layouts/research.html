@@ -1,0 +1,43 @@
+{{ define "main" }}
+{{- $r := hugo.Data.research -}}
+<h1>{{ .Title }}</h1>
+
+{{- with $r.jmp }}
+<section id="jmp" aria-labelledby="jmp-heading">
+  <h2 id="jmp-heading">Job Market Paper</h2>
+  {{- partial "paper.html" (dict "paper" . "kind" "jmp") }}
+</section>
+{{- end }}
+
+{{- with $r.publications }}
+<section id="publications" aria-labelledby="publications-heading">
+  <h2 id="publications-heading">Publications</h2>
+  {{- range . }}
+  {{- partial "paper.html" (dict "paper" . "kind" "publication") }}
+  {{- end }}
+</section>
+{{- end }}
+
+{{- with $r.work_in_progress }}
+<section id="wip" aria-labelledby="wip-heading">
+  <h2 id="wip-heading">Work in Progress</h2>
+  {{- range . }}
+  {{- partial "paper.html" (dict "paper" . "kind" "wip") }}
+  {{- end }}
+</section>
+{{- end }}
+
+{{- with $r.presentations }}
+<section id="presentations" aria-labelledby="presentations-heading">
+  <h2 id="presentations-heading">Selected presentations</h2>
+  <ul class="dated-list">
+    {{- range . }}
+    <li>
+      <span class="year">{{ .year }}</span>
+      <span>{{ .event }}{{ with .place }}, {{ . }}{{ end }}{{ with .paper }} <span class="badge">{{ . }}</span>{{ end }}</span>
+    </li>
+    {{- end }}
+  </ul>
+</section>
+{{- end }}
+{{ end }}

@@ -1,0 +1,23 @@
+{{- /*
+  Home page photo, cropped to 4:5 and served as WebP with a JPEG fallback.
+  Displayed at 10rem (mobile) / 11rem (desktop) wide.
+*/ -}}
+{{- with resources.Get "img/headshot.jpeg" -}}
+{{- $img := . -}}
+{{- $widths := slice 176 264 352 528 -}}
+{{- $webp := slice -}}
+{{- $jpeg := slice -}}
+{{- range $widths -}}
+  {{- $h := div (mul . 5) 4 -}}
+  {{- $w := $img.Fill (printf "%dx%d webp q82 Center" . $h) -}}
+  {{- $j := $img.Fill (printf "%dx%d jpg q82 Center" . $h) -}}
+  {{- $webp = $webp | append (printf "%s %dw" $w.RelPermalink $w.Width) -}}
+  {{- $jpeg = $jpeg | append (printf "%s %dw" $j.RelPermalink $j.Width) -}}
+{{- end -}}
+{{- $fb := $img.Fill "352x440 jpg q82 Center" -}}
+{{- $sizes := "(min-width: 40rem) 11rem, 10rem" }}
+<picture>
+  <source type="image/webp" srcset="{{ delimit $webp ", " }}" sizes="{{ $sizes }}">
+  <img src="{{ $fb.RelPermalink }}" srcset="{{ delimit $jpeg ", " }}" sizes="{{ $sizes }}" width="176" height="220" alt="Photo of {{ hugo.Data.profile.name }}" fetchpriority="high" decoding="async">
+</picture>
+{{- end -}}

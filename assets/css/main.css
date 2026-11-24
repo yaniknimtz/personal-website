@@ -49,6 +49,9 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   margin: 0;
   background: var(--bg);
   color: var(--text);
@@ -160,8 +163,8 @@ strong {
 }
 
 main {
-  padding-top: 1.5rem;
-  padding-bottom: 3rem;
+  flex: 1 0 auto;
+  padding: 2rem 0 3rem;
 }
 
 /* ---------- Skip link ---------- */
@@ -227,7 +230,8 @@ main {
   align-items: center;
   min-height: 44px;
   min-width: 44px;
-  padding: 0 0.6rem;
+  padding: 0 0.5rem;
+  font-size: 1rem;
   color: var(--text);
   text-decoration: none;
   border-radius: var(--radius);
@@ -255,6 +259,11 @@ main {
 }
 
 @media (min-width: 40rem) {
+  .site-nav a {
+    padding: 0 0.6rem;
+    font-size: 1.0625rem;
+  }
+
   .site-nav li:first-child a {
     padding-left: 0.6rem;
   }
@@ -459,12 +468,20 @@ main {
 
 @media (min-width: 40rem) {
   .contact-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: max-content 1fr;
   }
 }
 
 .contact-grid p {
   margin: 0;
+}
+
+.contact-grid p + p {
+  margin-top: 0.75rem;
+}
+
+.contact-grid + .icon-links {
+  margin-top: 1rem;
 }
 
 address {
@@ -705,6 +722,11 @@ summary {
   .site-header,
   .site-footer {
     border: 0;
+  }
+
+  body {
+    display: block;
+    min-height: 0;
   }
 
   .container {
