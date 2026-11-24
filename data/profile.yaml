@@ -27,11 +27,11 @@ address:
   - "Department of Economics, Faculty of Economics and Business"
   - "Universitat Rovira i Virgili, Campus Bellissens"
   - "Av. de la Universitat 1, 43204 Reus, Spain"
-office: "" # TODO (optional): office number [ASK YANIK]
+office: "" # optional, e.g. "Office 2.15"
 
 # CV: overwrite static/files/Yanik_Nimtz_CV.pdf and update the month.
 cv: "/files/Yanik_Nimtz_CV.pdf"
-cv_updated: "" # TODO: month the web CV was last updated, e.g. "November 2026"
+cv_updated: "November 2026"
 
 # Profile links. Leave a value empty to hide it; fill it in to show the icon.
 links:
