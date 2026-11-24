@@ -742,17 +742,44 @@ summary {
     break-after: avoid;
   }
 
-  .paper,
+  .paper--wip,
   .figure,
   .dated-list li {
     break-inside: avoid;
   }
 
-  .paper a[href^="http"]::after,
-  .paper a[href^="/"]::after {
+  .paper__title {
+    break-after: avoid;
+  }
+
+  h2 {
+    margin-top: 1.5rem;
+  }
+
+  .dated-list li {
+    padding: 0.25rem 0;
+  }
+
+  .figure img {
+    width: auto;
+    max-width: 100%;
+    max-height: 8cm;
+    border: 0;
+  }
+
+  .paper__links a {
+    min-height: 0;
+  }
+
+  .paper__links a[href^="http"]::after {
     content: " (" attr(href) ")";
     font-size: 0.85em;
     word-break: break-all;
+  }
+
+  /* The DOI link text already is the URL. */
+  .paper__links a[href^="https://doi.org/"]::after {
+    content: none;
   }
 
   details {
