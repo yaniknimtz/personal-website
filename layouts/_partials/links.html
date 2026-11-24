@@ -1,0 +1,38 @@
+{{- /*
+  Profile links (ORCID, LinkedIn, ...). Empty URLs are skipped, so a link
+  appears as soon as it is filled in data/profile.yaml.
+  Params (dict):
+    links     map of key -> URL (profile.links)
+    only      optional list of keys to show
+    labelled  true: icon + visible text; false: icon only, with aria-label
+*/ -}}
+{{- $defs := slice
+  (dict "key" "google_scholar" "label" "Google Scholar" "icon" "googlescholar" "aria" "Google Scholar profile")
+  (dict "key" "ssrn" "label" "SSRN" "icon" "ssrn" "aria" "SSRN author page")
+  (dict "key" "repec" "label" "RePEc/IDEAS" "icon" "" "aria" "RePEc/IDEAS profile")
+  (dict "key" "orcid" "label" "ORCID" "icon" "orcid" "aria" "ORCID profile")
+  (dict "key" "linkedin" "label" "LinkedIn" "icon" "linkedin" "aria" "LinkedIn profile")
+  (dict "key" "github" "label" "GitHub" "icon" "github" "aria" "GitHub profile")
+-}}
+{{- $links := .links | default dict -}}
+{{- $only := .only -}}
+{{- $labelled := .labelled -}}
+{{- $items := slice -}}
+{{- range $defs -}}
+  {{- $url := index $links .key -}}
+  {{- if and $url (or (not $only) (in $only .key)) -}}
+    {{- $items = $items | append (merge . (dict "url" $url)) -}}
+  {{- end -}}
+{{- end -}}
+{{- with $items }}
+<ul class="icon-links{{ if $labelled }} icon-links--labelled{{ end }}">
+  {{- range . }}
+  <li>
+    <a href="{{ .url }}" rel="me noopener"{{ if and (not $labelled) .icon }} aria-label="{{ .aria }}"{{ end }}>
+      {{- with .icon }}{{ partial "icon.html" . }}{{ end -}}
+      {{- if or $labelled (not .icon) }}<span>{{ .label }}</span>{{ end -}}
+    </a>
+  </li>
+  {{- end }}
+</ul>
+{{- end -}}

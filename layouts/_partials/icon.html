@@ -1,0 +1,4 @@
+{{- /* Inline an SVG icon from assets/icons/. Usage: partial "icon.html" "orcid" */ -}}
+{{- with resources.Get (printf "icons/%s.svg" .) -}}
+  {{- .Content | strings.TrimSpace | safeHTML -}}
+{{- end -}}

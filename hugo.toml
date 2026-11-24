@@ -6,6 +6,8 @@ title = "Yanik Nimtz | Economics PhD Candidate, Universitat Rovira i Virgili"
 # Only the pages this site uses: no RSS, no tags/categories.
 disableKinds = ["rss", "taxonomy", "term"]
 enableRobotsTXT = true
+# Keep the case of URLs such as /files/Yanik_Nimtz_CV.pdf (GitHub Pages is case-sensitive).
+disablePathToLower = true
 
 [params]
   description = "Yanik Nimtz is an economics PhD candidate at Universitat Rovira i Virgili working on environmental economics, climate policy and the EU Emissions Trading System. Job market paper, CV and research."
