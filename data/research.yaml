@@ -1,0 +1,105 @@
+# Research page and the job market paper box on the home page.
+# Text fields may use Markdown (e.g. **bold**, *italic*).
+# Empty sections are hidden automatically.
+
+jmp:
+  title: "Impact of the Market Stability Reserve on firm profitability"
+  authors: ["Yanik Nimtz", "Mercedes Teruel"]
+  coauthors:
+    - name: "Mercedes Teruel"
+      url: "https://sites.google.com/view/mercedes-teruel-urv"
+  # Never name the journal the paper is submitted to.
+  status: "Submitted"
+  updated: "November 2026"
+  pdf: "/files/Nimtz_Teruel_JMP_MSR_Firm_Profitability.pdf"
+  pdf_label: "Working paper version, November 2026"
+  jel: "H23, Q54, Q58"
+  keywords: "Climate policy, Difference-in-differences, EU ETS, Financial performance"
+  presented_at:
+    - "14th PhD-Student Workshop on Industrial and Public Economics (WIPE), Reus, Feb 2026"
+    - "28th Applied Economics Meeting (ALdE), Cádiz, Jun 2026"
+  key_findings:
+    - >-
+      The 2019 introduction of the Market Stability Reserve tightened the EU ETS and pushed up carbon prices. In 2019 it reduced the return on assets of regulated firms by about **1 percentage point**, but there are no significant losses in later years.
+    - >-
+      Firms adjusted with a **two-to-three-year lag** by raising labour productivity and reducing employment. This is a shift from short-run compliance costs, as neoclassical theory predicts, to adaptation, in line with the Porter hypothesis.
+    - >-
+      Policy implication: **predictable, long-term reform paths** give firms time to adapt and can avoid sudden profitability shocks. This matters for the current debate on reforming the EU ETS.
+    - >-
+      Data and method: 755 EU ETS firms and 10,545 comparable non-regulated firms, 2015–2023, combining EUTL and Orbis Europe. Entropy-balanced difference-in-differences and event study.
+  abstract: >-
+    The European Union Emissions Trading System (EU ETS) is the world's largest carbon market and foundation of climate policy in the EU. While previous research found little evidence that earlier phases of the EU ETS negatively affected regulated firms' economic performance, the 2019 introduction of the Market Stability Reserve (MSR) fundamentally changed the system's allowance dynamics and contributed to a sharp increase in CO₂ prices. This paper investigates whether the MSR directive and the resulting tightening of the EU ETS imposed measurable costs on regulated firms, thereby challenging the previously observed neutrality of the system on firm profitability. We combine data from the European Union Transaction Log (EUTL) with firm-level financial information from the Orbis Europe database and apply entropy balancing to a panel of 755 regulated firms and 10,545 comparable non-regulated firms between 2015 and 2023 to estimate the causal impact of the MSR-era tightening of the EU ETS through a difference-in-difference and event-study approach. Our results indicate that regulated firms experienced a temporary decline in profitability, particularly in the year of the MSR's introduction, while longer-term effects remain limited and statistically insignificant in most specifications. We further find evidence that firms responded through productivity improvements and reductions in employment, which may have partially offset the increased carbon-related cost burden. The findings suggest that the MSR-era tightening created tangible financial pressure on regulated firms, while substantial long-term adverse effects on firms' economic performance are not detected.
+  figure: "img/jmp_roa_event_study.png"
+  figure_caption: >-
+    Event-study estimates of the effect of the MSR-era EU ETS tightening on regulated firms' return on assets (percentage points), 2015–2023, relative to 2018. Bars show confidence intervals.
+  figure_alt: >-
+    Event-study chart. The effect on return on assets is close to zero in 2015–2017, drops to about −1 percentage point in 2019, the year the Market Stability Reserve was introduced, and is not statistically different from zero from 2020 to 2023.
+
+publications:
+  - authors: "Nimtz, Y., & Teruel, M."
+    year: 2026
+    title: "Corporate Decarbonization: Understanding CO₂ Emission Drivers Across High- and Low-Polluting Firms in OECD Countries"
+    journal: "Business Strategy and the Environment"
+    # TODO: volume, issue and pages once assigned (currently online-first, 2026).
+    volume: ""
+    issue: ""
+    pages: ""
+    doi: "10.1002/bse.70849"
+    pdf: "/files/Nimtz_Teruel_2026_Corporate_Decarbonization_BSE.pdf"
+    open_access: true
+    abstract: >-
+      Decarbonization of the economy is a central challenge in the fight against climate change. Although most governments show clear commitment to limiting global warming, the drivers of corporate decarbonization remain underexplored. Using a dataset of 1052 firms from OECD, this article analyses how intangible assets and environmental innovation affect corporate environmental performance. By applying bootstrapped quantile regressions, we show how firm- and country-level factors are associated with high- and low-polluting firms. Our results suggest that intangible assets and environmental innovation improve environmental performance across quantiles, with a stronger effect for high-polluting firms. Furthermore, environmental innovation can reduce short-term emission growth. Finally, intangible assets depend on the sectorial CO₂ intensity and have limited significance in sectors with low carbon intensity. At the policy level, our results call for emission-related regulation because it improves corporate decarbonization. Furthermore, it is necessary to have a regulatory strategy that incorporates incentives for intangible asset development and innovation, differentiating between high- and low-polluting firms.
+
+# Preliminary drafts: no PDFs, short description only.
+work_in_progress:
+  - title: "Does carbon leakage appear under high CO₂ prices? Impact of high carbon prices on emission behaviour of multinationals under the EU ETS"
+    coauthors:
+      - name: "Mercedes Teruel"
+        url: "https://sites.google.com/view/mercedes-teruel-urv"
+      - name: "Pelin Demirel"
+        affiliation: "Imperial College London"
+        url: ""
+    description: >-
+      Revisits carbon leakage for 2012–2024, when the EU allowance price rose roughly tenfold to over €80. Using CDP scope 1 emissions and Compustat data for 1,722 multinational firms, it finds that EU ETS firms reduce the EU share of their emissions through slower EU emission growth rather than faster growth elsewhere. Firms more exposed to carbon costs cut EU emissions more, with no detectable increase abroad. So far there is no evidence of carbon leakage within multinationals.
+  - title: "The role of certification of innovation on firm growth: an empirical analysis of Spanish SMEs"
+    coauthors:
+      - name: "Mercedes Teruel"
+        url: "https://sites.google.com/view/mercedes-teruel-urv"
+        note: "first author"
+    description: >-
+      Studies whether Spain's official "innovative SME" certificate signals superior performance. Using 2,525 certified firms and 58,424 controls (2012–2024) with a cohort-stacked entropy-balanced difference-in-differences design, it finds that certification raises sales (about +4.6%) and employment (about +7.6%) in the first three years, while labour productivity falls by about 3.5% in the short run.
+
+# Newest first. paper: "JMP" marks talks on the job market paper.
+presentations:
+  - year: 2026
+    event: "28th Applied Economics Meeting (ALdE)"
+    place: "Universidad de Cádiz, Spain"
+    paper: "JMP"
+  - year: 2026
+    event: "14th PhD-Student Workshop on Industrial and Public Economics (WIPE)"
+    place: "Reus, Spain"
+    paper: "JMP"
+  - year: 2025
+    event: "KID 2025 Summer School"
+    place: "Université Côte d'Azur, Nice, France"
+  - year: 2025
+    event: "PhD Summer School on the Economics of the Green and Digital Transitions"
+    place: "Maastricht University & UNU-MERIT, Netherlands"
+  - year: 2025
+    event: "27th Applied Economics Meeting (ALdE)"
+    place: "Universidad de Murcia, Spain"
+  - year: 2025
+    event: "II Seminar of PhD Students on Energy and Environment"
+    place: "Chair of Energy Sustainability, Universitat de Barcelona, Spain"
+  - year: 2025
+    event: "6th International PhDays Conference"
+    place: "Ingenio (CSIC-UPV), Valencia, Spain"
+  - year: 2025
+    event: "13th PhD-Student Workshop on Industrial and Public Economics (WIPE)"
+    place: "Reus, Spain"
+  - year: 2024
+    event: "9th ECO-SOS Doctorials"
+    place: "Universitat Rovira i Virgili, Reus, Spain"
+  - year: 2024
+    event: "2nd Bi-annual Workshop of the Eco-Innovation Society"
+    place: "HEC Paris, France"

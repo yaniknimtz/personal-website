@@ -1,0 +1,24 @@
+# Teaching page. Newest first.
+# level (optional): e.g. "Undergraduate" or "Master". Shown only when filled in.
+
+courses:
+  - year: 2026
+    course: "Principles of Applied Economics"
+    role: "Teaching Assistant"
+    institution: "Universitat Rovira i Virgili"
+    level: "" # TODO (optional): course level [ASK YANIK]
+  - year: 2025
+    course: "Global Economy"
+    role: "Teaching Assistant"
+    institution: "Universitat Rovira i Virgili"
+    level: "" # TODO (optional): course level [ASK YANIK]
+  - year: 2024
+    course: "Innovation Economy & Innovation Systems"
+    role: "Teaching Assistant"
+    institution: "Universitat Rovira i Virgili"
+    level: "" # TODO (optional): course level [ASK YANIK]
+  - year: 2017
+    course: "Introduction to Macroeconomics (Review Course)"
+    role: "Instructor"
+    institution: "PFH Private University of Applied Sciences Göttingen"
+    level: "" # TODO (optional): course level [ASK YANIK]
