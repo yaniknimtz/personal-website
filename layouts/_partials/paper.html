@@ -23,7 +23,7 @@
     <li><span class="badge">Open access</span></li>
     {{- end }}
     {{- with $p.pdf }}
-    <li><a href="{{ . | relURL }}">Article (PDF)</a></li>
+    <li><a href="{{ strings.TrimPrefix "/" . | relURL }}">Article (PDF)</a></li>
     {{- end }}
   </ul>
   {{- with $p.abstract }}
@@ -41,7 +41,7 @@
   </p>
   {{- with $p.pdf }}
   <ul class="paper__links">
-    <li><a href="{{ . | relURL }}">{{ $p.pdf_label | default "Paper" }} (PDF)</a></li>
+    <li><a href="{{ strings.TrimPrefix "/" . | relURL }}">{{ $p.pdf_label | default "Paper" }} (PDF)</a></li>
   </ul>
   {{- end }}
   {{- with $p.abstract }}

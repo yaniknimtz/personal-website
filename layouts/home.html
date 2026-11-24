@@ -47,7 +47,7 @@
   {{- end }}
   <div class="buttons">
     {{- with .pdf }}
-    <a class="button" href="{{ . | relURL }}">Paper (PDF)</a>
+    <a class="button" href="{{ strings.TrimPrefix "/" . | relURL }}">Paper (PDF)</a>
     {{- end }}
     <a class="button button--secondary" href="{{ "research/#jmp" | relURL }}">Abstract</a>
   </div>
@@ -80,7 +80,7 @@
       <p><span class="label">Phone</span><a href="tel:{{ replace . " " "" }}">{{ . }}</a></p>
       {{- end }}
       {{- with $profile.cv }}
-      <p><span class="label">CV</span><a href="{{ . | relURL }}">CV (PDF)</a>{{ with $profile.cv_updated }}, updated {{ . }}{{ end }}</p>
+      <p><span class="label">CV</span><a href="{{ strings.TrimPrefix "/" . | relURL }}">CV (PDF)</a>{{ with $profile.cv_updated }}, updated {{ . }}{{ end }}</p>
       {{- end }}
     </div>
     <div>
