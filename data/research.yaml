@@ -58,7 +58,7 @@ work_in_progress:
         url: "https://sites.google.com/view/mercedes-teruel-urv"
       - name: "Pelin Demirel"
         affiliation: "Imperial College London"
-        url: ""
+        url: "https://profiles.imperial.ac.uk/p.demirel"
     description: >-
       Revisits carbon leakage for 2012–2024, when the EU allowance price rose roughly tenfold to over €80. Using CDP scope 1 emissions and Compustat data for 1,722 multinational firms, it finds that EU ETS firms reduce the EU share of their emissions through slower EU emission growth rather than faster growth elsewhere. Firms more exposed to carbon costs cut EU emissions more, with no detectable increase abroad. So far there is no evidence of carbon leakage within multinationals.
   - title: "The role of certification of innovation on firm growth: an empirical analysis of Spanish SMEs"
@@ -71,6 +71,9 @@ work_in_progress:
 
 # Newest first. paper: "JMP" marks talks on the job market paper.
 presentations:
+  - year: 2026
+    event: "10th ECO-SOS Doctorials"
+    place: "Universitat Rovira i Virgili, Reus, Spain"
   - year: 2026
     event: "28th Applied Economics Meeting (ALdE)"
     place: "Universidad de Cádiz, Spain"
