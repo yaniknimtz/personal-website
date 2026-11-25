@@ -688,6 +688,17 @@ summary {
   color: var(--muted);
 }
 
+/* ---------- Justified running text ---------- */
+
+.bio p,
+.jmp-box li,
+.abstract p,
+.paper--wip > p:not(.paper__meta) {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
 /* ---------- 404 ---------- */
 
 .not-found {

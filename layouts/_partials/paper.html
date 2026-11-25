@@ -44,9 +44,18 @@
     <li><a href="{{ strings.TrimPrefix "/" . | relURL }}">{{ $p.pdf_label | default "Paper" }} (PDF)</a></li>
   </ul>
   {{- end }}
-  {{- with $p.abstract }}
-  <h4 class="subhead">Abstract</h4>
-  <p>{{ . | markdownify }}</p>
+  {{- if or $p.abstract $p.figure }}
+  <details id="jmp-abstract">
+    <summary>Abstract{{ if $p.figure }} and figure{{ end }}</summary>
+    <div class="abstract">
+      {{- with $p.abstract }}
+      <p>{{ . | markdownify }}</p>
+      {{- end }}
+      {{- with $p.figure }}
+      {{- partial "figure.html" (dict "src" . "alt" $p.figure_alt "caption" $p.figure_caption) }}
+      {{- end }}
+    </div>
+  </details>
   {{- end }}
   {{- if or $p.jel $p.keywords }}
   <p class="muted">
@@ -57,9 +66,6 @@
   {{- end }}
   {{- with $p.presented_at }}
   <p class="muted"><strong>Presented at:</strong> {{ delimit . "; " }}</p>
-  {{- end }}
-  {{- with $p.figure }}
-  {{- partial "figure.html" (dict "src" . "alt" $p.figure_alt "caption" $p.figure_caption) }}
   {{- end }}
 
   {{- else }}
