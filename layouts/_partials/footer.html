@@ -1,0 +1,11 @@
+{{- $profile := hugo.Data.profile -}}
+<footer class="site-footer">
+  <div class="container">
+    <p>
+      © {{ $profile.name }}
+      {{- with $profile.email }} · {{ partial "email.html" . }}{{ end }}
+      · Last updated: <time datetime="{{ now.Format "2006-01-02" }}">{{ now.Format "2 January 2006" }}</time>
+    </p>
+    {{- partial "links.html" (dict "links" $profile.links "only" (slice "orcid" "linkedin") "labelled" false) }}
+  </div>
+</footer>

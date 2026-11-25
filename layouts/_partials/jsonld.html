@@ -1,0 +1,26 @@
+{{- /* schema.org Person for the home page (PLAN.md 10.1). */ -}}
+{{- $profile := hugo.Data.profile -}}
+{{- $alumni := slice -}}
+{{- range $profile.alumni_of -}}
+  {{- $alumni = $alumni | append (dict "@type" "CollegeOrUniversity" "name" .) -}}
+{{- end -}}
+{{- $sameAs := slice -}}
+{{- range $k, $v := $profile.links -}}
+  {{- with $v }}{{ $sameAs = $sameAs | append . }}{{ end -}}
+{{- end -}}
+{{- $person := dict
+  "@context" "https://schema.org"
+  "@type" "Person"
+  "name" $profile.name
+  "jobTitle" $profile.job_title
+  "affiliation" (dict "@type" "CollegeOrUniversity" "name" $profile.affiliation)
+  "alumniOf" $alumni
+  "url" site.Home.Permalink
+  "email" $profile.email
+  "sameAs" (sort $sameAs)
+  "knowsAbout" $profile.research_interests
+-}}
+{{- with resources.Get "img/headshot.jpeg" -}}
+  {{- $person = merge $person (dict "image" (.Fill "800x800 jpg q82 Top").Permalink) -}}
+{{- end }}
+<script type="application/ld+json">{{ $person | jsonify | safeJS }}</script>

@@ -1,0 +1,59 @@
+# Site-wide profile. Templates read everything from here.
+
+name: "Yanik Nimtz"
+title_line: "PhD Candidate in Economics, Universitat Rovira i Virgili"
+
+# Structured data (JSON-LD) on the home page.
+job_title: "PhD Candidate in Economics"
+affiliation: "Universitat Rovira i Virgili"
+alumni_of:
+  - "Universitat Rovira i Virgili"
+  - "PFH Private University of Applied Sciences Göttingen"
+
+# Job market banner at the top of the home page. Set to false after the market.
+on_market: true
+market_banner: "I am on the 2026–2027 academic job market and will complete my PhD in late summer 2027."
+
+research_interests:
+  - "Environmental Economics"
+  - "Sustainability"
+  - "Innovation Economics"
+research_interests_secondary: "Corporate decarbonization · Climate policy · EU ETS"
+
+# Contact
+email: "yanik.nimtz@urv.cat"
+phone: "+34 622 497 529"
+address:
+  - "Department of Economics, Faculty of Economics and Business"
+  - "Universitat Rovira i Virgili, Campus Bellissens"
+  - "Av. de la Universitat 1, 43204 Reus, Spain"
+office: "" # optional, e.g. "Office 2.15"
+
+# CV: overwrite static/files/Yanik_Nimtz_CV.pdf and update the month.
+cv: "/files/Yanik_Nimtz_CV.pdf"
+cv_updated: "November 2026"
+
+# Profile links. Leave a value empty to hide it; fill it in to show the icon.
+links:
+  orcid: "https://orcid.org/0009-0005-4239-2289"
+  linkedin: "https://www.linkedin.com/in/yanik-nimtz-14b0bb23a/"
+  google_scholar: ""
+  ssrn: ""
+  repec: ""
+  github: ""
+
+# Skills block at the end of the home page.
+skills:
+  - label: "Languages"
+    items:
+      - "German (native)"
+      - "English (fluent, C1; Master's in International Markets taught in English)"
+      - "Spanish (fluent, C1; Master's in Entrepreneurship and Innovation taught in Spanish)"
+      - "Catalan (B1, certified)"
+  - label: "Software"
+    items:
+      - "Stata (advanced: panel data econometrics, difference-in-differences, event studies, entropy balancing)"
+      - "LaTeX (advanced)"
+      - "Python (working knowledge)"
+      - "R (basic)"
+      - "AI-assisted coding and research workflows with Claude Code"

@@ -1,0 +1,9 @@
+{{- /*
+  Render an email address as "user [at] domain". The inline script in
+  email-script.html turns it into a mailto: link; without JavaScript the
+  plain text stays. Usage: partial "email.html" "name@example.org"
+*/ -}}
+{{- $parts := split . "@" -}}
+{{- if eq (len $parts) 2 -}}
+<span class="email" data-user="{{ index $parts 0 }}" data-domain="{{ index $parts 1 }}">{{ index $parts 0 }} [at] {{ index $parts 1 }}</span>
+{{- end -}}

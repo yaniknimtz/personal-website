@@ -1,0 +1,55 @@
+{{- $profile := hugo.Data.profile -}}
+{{- $title := site.Title -}}
+{{- if eq .Kind "404" -}}
+  {{- $title = printf "Page not found | %s" $profile.name -}}
+{{- else if not .IsHome -}}
+  {{- $title = printf "%s | %s" .Title $profile.name -}}
+{{- end -}}
+{{- $description := .Description | default site.Params.description -}}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $description }}">
+<meta name="author" content="{{ $profile.name }}">
+{{- if eq .Kind "404" }}
+<meta name="robots" content="noindex">
+{{- else }}
+<link rel="canonical" href="{{ .Permalink }}">
+{{- end }}
+
+{{- /* Open Graph and Twitter card, with a square crop of the headshot. */}}
+{{- with resources.Get "img/headshot.jpeg" }}
+{{- $og := .Fill "800x800 jpg q82 Top" }}
+<meta property="og:type" content="{{ if $.IsHome }}profile{{ else }}website{{ end }}">
+<meta property="og:site_name" content="{{ $profile.name }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:url" content="{{ $.Permalink }}">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="{{ $og.Permalink }}">
+<meta property="og:image:width" content="{{ $og.Width }}">
+<meta property="og:image:height" content="{{ $og.Height }}">
+<meta property="og:image:alt" content="Photo of {{ $profile.name }}">
+{{- if $.IsHome }}
+<meta property="profile:first_name" content="{{ index (split $profile.name " ") 0 }}">
+<meta property="profile:last_name" content="{{ index (split $profile.name " ") 1 }}">
+{{- end }}
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+<meta name="twitter:image" content="{{ $og.Permalink }}">
+<meta name="twitter:image:alt" content="Photo of {{ $profile.name }}">
+{{- end }}
+
+<link rel="icon" href="{{ "favicon.ico" | relURL }}" sizes="48x48">
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
+<meta name="theme-color" content="#fcfcfa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111816" media="(prefers-color-scheme: dark)">
+
+{{- $css := resources.Get "css/main.css" | minify }}
+<style>{{ $css.Content | safeCSS }}</style>
+
+{{- if .IsHome }}
+{{- partial "jsonld.html" . }}
+{{- end }}

@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div class="not-found">
+  <h1>Page not found</h1>
+  <p>Sorry, this page does not exist. It may have moved. These links should help:</p>
+  <ul>
+    <li><a href="{{ site.Home.RelPermalink }}">Home</a></li>
+    <li><a href="{{ "research/" | relURL }}">Research</a>: job market paper, publications and work in progress</li>
+    <li><a href="{{ "teaching/" | relURL }}">Teaching</a></li>
+    {{- with hugo.Data.profile.cv }}
+    <li><a href="{{ strings.TrimPrefix "/" . | relURL }}">CV (PDF)</a></li>
+    {{- end }}
+  </ul>
+</div>
+{{ end }}

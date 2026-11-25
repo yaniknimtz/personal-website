@@ -1,0 +1,45 @@
+# Site configuration. Content lives in data/*.yaml and content/*.md.
+baseURL = "https://yaniknimtz.com/"
+locale = "en"
+title = "Yanik Nimtz | Economics PhD Candidate, Universitat Rovira i Virgili"
+
+# Only the pages this site uses: no RSS, no tags/categories.
+disableKinds = ["rss", "taxonomy", "term"]
+enableRobotsTXT = true
+# Keep the case of URLs such as /files/Yanik_Nimtz_CV.pdf (GitHub Pages is case-sensitive).
+disablePathToLower = true
+
+[params]
+  description = "Yanik Nimtz is an economics PhD candidate at Universitat Rovira i Virgili working on environmental economics, climate policy and the EU Emissions Trading System. Job market paper, CV and research."
+
+[sitemap]
+  changeFreq = "monthly"
+
+[markup.goldmark.renderer]
+  unsafe = false
+
+[minify.tdewolff.html]
+  keepWhitespace = false
+
+[[menus.main]]
+  name = "Home"
+  pageRef = "/"
+  weight = 10
+
+[[menus.main]]
+  name = "Research"
+  pageRef = "/research"
+  weight = 20
+
+[[menus.main]]
+  name = "Teaching"
+  pageRef = "/teaching"
+  weight = 30
+
+[[menus.main]]
+  name = "CV"
+  url = "/files/Yanik_Nimtz_CV.pdf"
+  weight = 40
+  [menus.main.params]
+    newTab = true
+    pdf = true

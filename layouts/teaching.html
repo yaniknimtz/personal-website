@@ -1,0 +1,16 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+{{- with hugo.Data.teaching.courses }}
+<ul class="dated-list">
+  {{- range . }}
+  <li>
+    <span class="year">{{ .year }}</span>
+    <span>
+      <strong>{{ .course }}</strong>
+      <span class="detail">{{ .role }} · {{ .institution }}{{ with .level }} · {{ . }}{{ end }}</span>
+    </span>
+  </li>
+  {{- end }}
+</ul>
+{{- end }}
+{{ end }}

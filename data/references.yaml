@@ -1,0 +1,17 @@
+# Letter writers. Set show: true to list a person on the home page.
+
+references:
+  - name: "Mercedes Teruel"
+    url: "https://sites.google.com/view/mercedes-teruel-urv"
+    role: "Full Professor of Economics (PhD supervisor)"
+    institution: "Universitat Rovira i Virgili, Department of Economics"
+    email: "mercedes.teruel@urv.cat"
+    show: true
+
+  # Hidden until Yanik confirms.
+  - name: "Pelin Demirel"
+    url: "https://profiles.imperial.ac.uk/p.demirel"
+    role: "" # TODO
+    institution: "Imperial College London, Dyson School of Design Engineering"
+    email: "" # TODO
+    show: false

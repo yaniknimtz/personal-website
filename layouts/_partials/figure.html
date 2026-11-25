@@ -1,0 +1,27 @@
+{{- /*
+  Responsive figure from assets/. Params (dict): src, alt, caption.
+  Serves WebP in several widths with a PNG/JPEG fallback.
+*/ -}}
+{{- with resources.Get .src -}}
+{{- $img := . -}}
+{{- $widths := slice 480 736 960 1280 -}}
+{{- $webp := slice -}}
+{{- $fallback := slice -}}
+{{- range $widths -}}
+  {{- if le . $img.Width -}}
+    {{- $w := $img.Resize (printf "%dx webp q90 drawing" .) -}}
+    {{- $webp = $webp | append (printf "%s %dw" $w.RelPermalink $w.Width) -}}
+  {{- end -}}
+{{- end -}}
+{{- $fb := $img.Resize (printf "%dx" (math.Min 736 $img.Width | int)) -}}
+{{- $sizes := "(min-width: 48.5rem) 46rem, calc(100vw - 2.5rem)" }}
+<figure class="figure">
+  <picture>
+    <source type="image/webp" srcset="{{ delimit $webp ", " }}" sizes="{{ $sizes }}">
+    <img src="{{ $fb.RelPermalink }}" width="{{ $fb.Width }}" height="{{ $fb.Height }}" alt="{{ $.alt }}" loading="lazy" decoding="async">
+  </picture>
+  {{- with $.caption }}
+  <figcaption>{{ . }}</figcaption>
+  {{- end }}
+</figure>
+{{- end -}}

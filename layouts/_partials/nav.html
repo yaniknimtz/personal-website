@@ -1,0 +1,21 @@
+{{- $profile := hugo.Data.profile -}}
+<header class="site-header">
+  <div class="container">
+    <a class="site-name" href="{{ site.Home.RelPermalink }}">{{ $profile.name }}</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        {{- range site.Menus.main }}
+        <li>
+          <a href="{{ .URL }}"
+            {{- if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}
+            {{- if .Params.newTab }} target="_blank" rel="noopener"{{ end }}>
+            {{- .Name -}}
+            {{- if .Params.pdf }}<span class="nav-note">(PDF)</span>{{ end -}}
+            {{- if .Params.newTab }}<span class="visually-hidden">, opens in a new tab</span>{{ end -}}
+          </a>
+        </li>
+        {{- end }}
+      </ul>
+    </nav>
+  </div>
+</header>

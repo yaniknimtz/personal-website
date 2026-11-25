@@ -1,0 +1,73 @@
+{{- /*
+  One paper. Params (dict):
+    paper  an entry from data/research.yaml
+    kind   "jmp" | "publication" | "wip"
+*/ -}}
+{{- $p := .paper -}}
+{{- $kind := .kind -}}
+<article class="paper paper--{{ $kind }}">
+  <h3 class="paper__title">{{ $p.title | markdownify }}</h3>
+
+  {{- if eq $kind "publication" }}
+  <p class="paper__meta citation">
+    {{- $p.authors }} ({{ $p.year }}). <em>{{ $p.journal }}</em>
+    {{- with $p.volume }}, {{ . }}{{ end }}
+    {{- with $p.issue }}({{ . }}){{ end }}
+    {{- with $p.pages }}, {{ . }}{{ end }}.
+  </p>
+  <ul class="paper__links">
+    {{- with $p.doi }}
+    <li>DOI:&nbsp;<a href="https://doi.org/{{ . }}">https://doi.org/{{ . }}</a></li>
+    {{- end }}
+    {{- if $p.open_access }}
+    <li><span class="badge">Open access</span></li>
+    {{- end }}
+    {{- with $p.pdf }}
+    <li><a href="{{ strings.TrimPrefix "/" . | relURL }}">Article (PDF)</a></li>
+    {{- end }}
+  </ul>
+  {{- with $p.abstract }}
+  <details>
+    <summary>Abstract</summary>
+    <div class="abstract">{{ . | markdownify }}</div>
+  </details>
+  {{- end }}
+
+  {{- else if eq $kind "jmp" }}
+  <p class="paper__meta">
+    {{- partial "coauthors.html" $p.coauthors }}
+    {{- with $p.status }} · {{ . }}{{ end }}
+    {{- with $p.updated }} · Latest version: {{ . }}{{ end -}}
+  </p>
+  {{- with $p.pdf }}
+  <ul class="paper__links">
+    <li><a href="{{ strings.TrimPrefix "/" . | relURL }}">{{ $p.pdf_label | default "Paper" }} (PDF)</a></li>
+  </ul>
+  {{- end }}
+  {{- with $p.abstract }}
+  <h4 class="subhead">Abstract</h4>
+  <p>{{ . | markdownify }}</p>
+  {{- end }}
+  {{- if or $p.jel $p.keywords }}
+  <p class="muted">
+    {{- with $p.jel }}<strong>JEL:</strong> {{ . }}{{ end }}
+    {{- if and $p.jel $p.keywords }} · {{ end }}
+    {{- with $p.keywords }}<strong>Keywords:</strong> {{ . }}{{ end -}}
+  </p>
+  {{- end }}
+  {{- with $p.presented_at }}
+  <p class="muted"><strong>Presented at:</strong> {{ delimit . "; " }}</p>
+  {{- end }}
+  {{- with $p.figure }}
+  {{- partial "figure.html" (dict "src" . "alt" $p.figure_alt "caption" $p.figure_caption) }}
+  {{- end }}
+
+  {{- else }}
+  {{- with $p.coauthors }}
+  <p class="paper__meta">{{ partial "coauthors.html" . }}</p>
+  {{- end }}
+  {{- with $p.description }}
+  <p>{{ . | markdownify }}</p>
+  {{- end }}
+  {{- end }}
+</article>
