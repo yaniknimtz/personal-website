@@ -17,12 +17,12 @@ Academic job market website for Yanik Nimtz. Hugo static site, custom theme in `
 - Templates use Hugo's current layout structure: `layouts/baseof.html`, `home.html`, `page.html`, `research.html`, `teaching.html`, `404.html`, and partials in `layouts/_partials/`. `research` and `teaching` are selected with `layout:` in front matter.
 - `paper.html` renders one paper for `kind` = `jmp` | `publication` | `wip`. `links.html` renders profile links; empty URLs are skipped.
 - Icons are SVG files in `assets/icons/`, inlined by `icon.html`.
-- Emails go through `email.html` ("user [at] domain"), and an inline script in `email-script.html` turns them into mailto links.
+- Emails go through `email.html`, which renders a plain `mailto:` link showing the full address (Yanik asked for `@`, not `[at]`).
 
 ## Gotchas
 
 - Use `hugo.Data`, not `site.Data` (deprecated since Hugo 0.156; the build fails on warnings).
-- `relURL` treats a leading `/` as host-relative, which breaks the `github.io/personal-website/` subpath. Data paths start with `/`, so use `strings.TrimPrefix "/" . | relURL`.
+- `relURL` treats a leading `/` as host-relative, which breaks the site whenever it is served from a subpath (e.g. `github.io/<repo>/`). Data paths start with `/`, so use `strings.TrimPrefix "/" . | relURL`.
 - `disablePathToLower = true` in `hugo.toml` keeps `/files/Yanik_Nimtz_CV.pdf` case-sensitive-correct; without it Hugo lowercases menu URLs.
 - The workflow passes `--baseURL` from `actions/configure-pages`, so `baseURL` in `hugo.toml` only matters locally.
 

@@ -1,6 +1,6 @@
 # yaniknimtz.com
 
-Personal academic website of Yanik Nimtz (PhD candidate in Economics, Universitat Rovira i Virgili), built for the 2026–2027 academic job market.
+Personal academic website of Yanik Nimtz (PhD candidate in Economics, Universitat Rovira i Virgili), built for the 2027–2028 academic job market.
 
 Static site made with [Hugo](https://gohugo.io/) and a small custom theme in this repository. Hosted on GitHub Pages and deployed automatically by GitHub Actions. There is no database and no JavaScript framework: content is plain YAML and Markdown.
 
@@ -64,7 +64,7 @@ Pushing to the `main` branch publishes the site. GitHub Actions (`.github/workfl
 ### One-time setup
 
 1. GitHub repository → **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-2. Push to `main` (or run the workflow from the **Actions** tab). Until the custom domain is set up, the site is at <https://yaniknimtz.github.io/personal-website/>. The workflow picks up the correct address automatically, so no configuration change is needed when the domain goes live.
+2. Push to `main` (or run the workflow from the **Actions** tab). The site is at <https://yaniknimtz.github.io/> once the repository is named `yaniknimtz.github.io` (otherwise at `https://yaniknimtz.github.io/<repository-name>/`). The workflow picks up the correct address automatically, so no configuration change is needed when the repository is renamed or the custom domain goes live.
 
 ### Custom domain `yaniknimtz.com`
 

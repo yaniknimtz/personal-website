@@ -2,13 +2,6 @@
 {{- $r := hugo.Data.research -}}
 <h1>{{ .Title }}</h1>
 
-{{- with $r.jmp }}
-<section id="jmp" aria-labelledby="jmp-heading">
-  <h2 id="jmp-heading">Job Market Paper</h2>
-  {{- partial "paper.html" (dict "paper" . "kind" "jmp") }}
-</section>
-{{- end }}
-
 {{- with $r.publications }}
 <section id="publications" aria-labelledby="publications-heading">
   <h2 id="publications-heading">Publications</h2>
@@ -16,6 +9,20 @@
   {{- partial "paper.html" (dict "paper" . "kind" "publication") }}
   {{- end }}
 </section>
+{{- end }}
+
+{{- with $r.jmp }}
+<section id="jmp" aria-labelledby="jmp-heading">
+  <h2 id="jmp-heading">Job Market Paper</h2>
+  {{- partial "paper.html" (dict "paper" . "kind" "jmp") }}
+</section>
+{{- /* Arriving via /research/#jmp (the Home "Abstract" button) opens the abstract. */}}
+<script>
+  if (location.hash === "#jmp") {
+    var d = document.getElementById("jmp-abstract");
+    if (d) d.open = true;
+  }
+</script>
 {{- end }}
 
 {{- with $r.work_in_progress }}

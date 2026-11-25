@@ -1,9 +1,0 @@
-<script>
-  document.querySelectorAll(".email[data-user]").forEach(function (el) {
-    var a = document.createElement("a");
-    a.href = "mailto:" + el.getAttribute("data-user") + "@" + el.getAttribute("data-domain");
-    a.className = "email";
-    a.textContent = el.textContent;
-    el.replaceWith(a);
-  });
-</script>
