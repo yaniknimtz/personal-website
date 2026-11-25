@@ -25,7 +25,7 @@ hugo --minify --panicOnWarning
 
 | What | File |
 |---|---|
-| Name, title line, job market banner, contact details, profile links, skills | `data/profile.yaml` |
+| Name, title line, job market banner, email, address, profile links, skills | `data/profile.yaml` |
 | Bio (home page text) | `content/_index.md` |
 | Job market paper, publications, work in progress, presentations | `data/research.yaml` |
 | Teaching | `data/teaching.yaml` |
